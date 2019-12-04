@@ -1,0 +1,19 @@
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.all;
+
+ENTITY LINK_LAYER is
+	port(i_SCLK : in std_logic;
+		  i_MOSI : in std_logic;
+		  i_SS   : in std_logic;
+		  o_MISO : out std_logic);
+END LINK_LAYER;
+
+architecture of LINK_LAYER is
+begin
+	process(i_SCLK, i_MOSI, i_SS)
+	begin
+	
+	
+	
+	end process
+end LINK_LAYER;

@@ -1,0 +1,23 @@
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.ALL;
+
+ENTITY CLOCK_DIVIDER is
+	generic (w_P  : natural := 100);
+	port(i_CLK : in  std_logic;
+		  o_CLK : out std_logic;);
+END CLOCK_DIVIDER;
+
+architecture BEHAVIOR of CLOCK_DIVIDER is
+signal w_CLK : std_logic;
+begin
+	process(i_CLK)
+	begin
+	
+		w_CLK <= i_CLK;
+		wait for (w_P / 2) ns;
+		w_CLK <= not i_CLK;
+		wait for (w_P / 2) ns;
+	end process;
+	o_CLK <= w_CLK;
+end BEHAVIOR;
+

@@ -1,0 +1,32 @@
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.all;
+
+ENTITY LAYER_LINK is
+	PORT(i_SCLK : in  std_logic;
+	     i_MOSI : in  std_logic;
+		  i_SS   : in  std_logic;
+		  i_MISO : out std_logic);
+END LAYER_LINK;
+
+architecture BEHAVIOR of LAYER_LINK is
+
+TYPE STATE is (OCIOSO, CONTROLE);
+SIGNAL ATUAL   : STATE;
+SIGNAL PROXIMO : STATE;
+
+BEGIN
+
+	p_ATUAL : PROCESS (i_SS, i_SCLK)
+	BEGIN
+		
+		IF (i_SS = '1') THEN
+		
+			ATUAL <= OCIOSO;
+			
+		ELSIF (RISING_EDGE(i_SCLK)) THEN
+		
+			ATUAL <= PROXIMO;
+			
+		END IF;
+	END PROCESS p_ATUAL;
+	
